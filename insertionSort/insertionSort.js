@@ -19,17 +19,19 @@ function insertionSort(items) {
     min = i;
 
     for (var j = i + 1; j < items.length; j++) {
+
       if (items[j] < items[min]) {
         swap(items, i, min);
         //min = j;
       } else if (i!==min) {
         swap(items, i, min);
-    }
+      }
 
     // if (i !== min) {
     //   swap(items, i, min);
     // }
     //
+    }
   }
   return items;
 }
