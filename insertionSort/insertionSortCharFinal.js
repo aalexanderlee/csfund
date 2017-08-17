@@ -1,43 +1,36 @@
 var arraySize = 40;
 
 var array = [];
+
 for (var index = 0; index < arraySize; index++) {
   var randomNumber = Math.round(Math.random() * arraySize);
-
   array.push(randomNumber);
 }
 
-
-function insertionSort(items) {
-  // index into unsorted section, moving right
-  var i;
-  // index into sorted section, moving left
-  var j;
-
-  for (i = 0; i < items.length; i++) {
-
-    // store the current value to insert later (this will be overwritten by the shift)
-    var value = items[i];
-
-    // Starting at the element (items[i - 1]) before the current value (value, items[i]),
-    // move left through the array (decrementing j) and shift each value to the right
-    // (move to items[j + 1]) if it is larger than the current value. Stop when you reach
-    //a value which is less than or equal to the current value.
-    for (j = i - 1; j > -1 && items[j] > value; j--) {
-      items[j + 1] = items[j];
-    }
-
-    // insert the value once you've reached the location where items[j] <= value
-    items[j + 1] = value;
-  }
-
-  return items;
+function swap(items, firstIndex, secondIndex) {
+  var temp = items[firstIndex];
+  items[firstIndex] = items[secondIndex];
+  items[secondIndex] = temp;
 }
 
+function insertionSort(items) {
+  //var len = items.length;
+  var min;
+  for (var i = 0; i < items.length; i++) {
+    min = i;
+    for (var j = i - 1; j < items.length; j--) {
 
-// ================================================
-// FUNCTION CALL
-// ================================================
+      if (items[j] < items[min]) {
+        min = j;
+      }
+
+      if (i !== min) {
+        swap(items, i, min);
+      }
+
+  }
+  return items;
+}
 
 console.log("PRE-SORT");
 console.log(array.join(" "));
