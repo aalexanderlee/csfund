@@ -19,17 +19,15 @@ function insertionSort(items) {
   for (var i = 0; i < items.length; i++) {
     min = i;
     for (var j = i - 1; j < items.length; j--) {
-
       if (items[j] < items[min]) {
         min = j;
       }
-
       if (i !== min) {
         swap(items, i, min);
       }
-
   }
   return items;
+  }
 }
 
 console.log("PRE-SORT");
