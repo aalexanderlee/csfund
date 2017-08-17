@@ -1,59 +1,46 @@
-// initialize this array length
 var arraySize = 40;
-// open an empty array to accept values
+
 var array = [];
-// loop through this array length called arraySize
 for (var index = 0; index < arraySize; index++) {
-  // get random numbers within this hypothetical array value spectrum
   var randomNumber = Math.round(Math.random() * arraySize);
-  // push all of these random values from this generated spectrum into the array
+
   array.push(randomNumber);
 }
 
-// swap function
-function swap(items, firstIndex, secondIndex) {
-  // temp will be the value sitting in the first index position
-  var temp = items[firstIndex];
-  // value of the first index will become the value of the second index
-  items[firstIndex] = items[secondIndex];
-  // value of the second index will equal the value of the first index value
-  items[secondIndex] = temp;
-  //this will make these two values in different indices switch places
-}
 
-// selection sort the using the items as the argument
 function insertionSort(items) {
-  // len is the length of the items array
-  var len = items.length;
-  // min will be some kind of empty variable
-  var min;
+  // index into unsorted section, moving right
+  var i;
+  // index into sorted section, moving left
+  var j;
 
-  // iterates this from the very first index of the items array
-  for (var i = 0; i < len; i++) {
-    // set index of minimum to this position
-    min = i;
+  for (i = 0; i < items.length; i++) {
 
-    // iterates one space up from the first index of array items
-    for (var j = i - 1; j < len; j--) {
-      if (items[j] < items[min]) {
-        min = j;
-      }
+    // store the current value to insert later (this will be overwritten by the shift)
+    var value = items[i];
+
+    // Starting at the element (items[i - 1]) before the current value (value, items[i]),
+    // move left through the array (decrementing j) and shift each value to the right
+    // (move to items[j + 1]) if it is larger than the current value. Stop when you reach
+    //a value which is less than or equal to the current value.
+    for (j = i - 1; j > -1 && items[j] > value; j--) {
+      items[j + 1] = items[j];
     }
-    // if the current index min i is not equal to the new min index min = j value
-    // swap this crap
-    if (i !== min) {
-      swap(items, i, min);
-    }
+
+    // insert the value once you've reached the location where items[j] <= value
+    items[j + 1] = value;
   }
 
   return items;
 }
 
+
 // ================================================
 // FUNCTION CALL
 // ================================================
+
 console.log("PRE-SORT");
 console.log(array.join(" "));
 console.log("---------------------------");
 console.log("POST-SORT");
-console.log(selectionSort(array).join(" "));
+console.log(insertionSort(array).join(" "));

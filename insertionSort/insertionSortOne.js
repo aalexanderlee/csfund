@@ -13,7 +13,6 @@ function swap(items, firstIndex, secondIndex) {
 }
 
 function insertionSort(items) {
-  //var len = items.length;
   var min;
   for (var i = 0; i < items.length; i++) {
     min = i;
@@ -27,10 +26,6 @@ function insertionSort(items) {
         swap(items, i, min);
       }
 
-    // if (i !== min) {
-    //   swap(items, i, min);
-    // }
-    //
     }
   }
   return items;
