@@ -59,6 +59,8 @@ BinarySearchTree.prototype.search = function(target) {
   return check;
 }
 
+
+
 BinarySearchTree.prototype.delete = function(deleteValue) {
   var temp = [];
 
